@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  ui:
+    volumes:
+      - ./ui/:/ui/
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: app
+    restart: always
+    # do not publicly expose port 8501
+    # ports:
+    #   - "8501:8501"
+  
+  reverse:
+    container_name: reverse
+    hostname: reverse
+    restart: always
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - ui
