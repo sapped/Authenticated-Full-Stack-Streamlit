@@ -2,8 +2,9 @@
 
 ## Notes for Users
 
-### Purpose
-Features:
+### Rationale & Features
+Streamlit is great but it doesn't have user authentication. This leverages Nginx as a reverse proxy layer with enterprise-grade authentication. Ability to authenticate with most protocols like OAuth2, SAML, etc. Default, setup with auth_basic which is just a hashed username & password on a file. Goal is to separate presentation (streamlit) from logic, piping & persistence (FastAPI / Postgres). Ideally deliver data that is as clean as possible 
+
 - Streamlit application that interacts with an internal API powered by [FastAPI](https://fastapi.tiangolo.com/)
 - Database is postgresql
 - pgadmin at /pgadmin4/
