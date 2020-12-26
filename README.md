@@ -1,7 +1,12 @@
 # Authenticated Full-Stack Streamlit
 
 ### Purpose
-Basic
+Features:
+- Streamlit application that interacts with an internal API powered by [FastAPI](https://fastapi.tiangolo.com/)
+- Database is postgresql
+- pgadmin at /pgadmin
+- This works on a server like a Digitalocean droplet, but doesn't work on localhost. This is because I can't seem to make the :80 redirect work with local nginx.
+- Nginx serves everything. See project.conf for the routes. Should be easy to read & follow-along the logic to add other services. Should even be easy to serve multiple streamlit applications with this
 
 ### Authentication
 The nginx project.conf file puts everything behind basic htpasswd authentication by including this in the top "server" block:
