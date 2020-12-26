@@ -8,6 +8,9 @@ Features:
 - This works on a server like a Digitalocean droplet, but doesn't work on localhost. This is because I can't seem to make the :80 redirect work with local nginx.
 - Nginx serves everything. See project.conf for the routes. Should be easy to read & follow-along the logic to add other services. Should even be easy to serve multiple streamlit applications with this
 
+### To-Do
+- In production, I'll look to replace the 'auth_basic' login using an htpasswd with an 'auth_requeset' SP-initiated SAML 2.0 SSO login flow. Then I'll host the streamlit apps at different endpoints, restricting access to a user whitelist.
+
 ### Authentication
 The nginx project.conf file puts everything behind basic htpasswd authentication by including this in the top "server" block:
 
