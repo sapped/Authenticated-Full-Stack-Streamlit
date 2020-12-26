@@ -33,5 +33,5 @@ replace [service name] with the docker-compose service name. In this case, it's 
 ### PGAdmin4 References when Setting This Up:
 Connect to postgres server in pgadmin(ctrl+f for "connect to a database server,": https://ahmed-nafies.medium.com/fastapi-with-sqlalchemy-postgresql-and-alembic-and-of-course-docker-f2b7411ee396
 
-- [Fully comprehensive](https://www.enterprisedb.com/postgres-tutorials/reverse-proxying-pgadmin)
+- [Fully comprehensive, did this one first. But also see below. Nginx should port_forward to 80, not 5050, for the GUI](https://www.enterprisedb.com/postgres-tutorials/reverse-proxying-pgadmin)
 - [But needs to do the port 80 in nginx config, not the 5050 for me to use it](https://stackoverflow.com/questions/61802782/reverse-proxy-in-docker-using-nginx-for-pgadmin4)
