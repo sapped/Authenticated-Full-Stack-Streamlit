@@ -3,7 +3,7 @@
 ## Notes for Users
 
 ### Rationale & Features
-Streamlit is great but it doesn't have user authentication. This leverages Nginx as a reverse proxy layer with enterprise-grade authentication. Ability to authenticate with most protocols like OAuth2, SAML, etc. Default, setup with auth_basic which is just a hashed username & password on a file. Goal is to separate presentation (streamlit) from logic, piping & persistence (FastAPI / Postgres). Ideally deliver data that is as clean as possible 
+Streamlit is great, but it doesn't natively support user authentication. This repo leverages Nginx as a reverse proxy layer with enterprise-grade authentication. It includes the ability to authenticate with most protocols like OAuth2, SAML, etc. This particular repo authenticates with Nginx's auth_basic, which is just a hashed username & password on a file. The goal is to separate presentation (streamlit) from logic, piping & persistence (FastAPI / Postgres). Ideally deliver data that is as clean as possible via the API and do minimal work before presenting on Streamlit. This way, you'll be setup for an easy transition to a more robust Flask/Django app once you're finished prototyping.
 
 - Streamlit application that interacts with an internal API powered by [FastAPI](https://fastapi.tiangolo.com/)
 - Database is postgresql
@@ -15,6 +15,8 @@ Streamlit is great but it doesn't have user authentication. This leverages Nginx
 - The subfolders for the API, PGAdmin4, and Postgres each have ".env.template" files that you'll use to create your own ".env" files in each corresponding subdirectory. The ".env" files themselves are .gitignore'd
 - copy the .env.template files into new .env files. You should change out these default values with the real environment variables you're looking to use
 - you should gitignore your .env files so you aren't sharing any important credentials with the universe
+- create htpasswd .htpasswd -c <user> in the nginx > auth folder
+- for subsequent users, you can print to command line by switching -c to -n and then copy-pasting the hashed password result
 
 ### Authentication
 The nginx project.conf file puts everything behind basic htpasswd authentication by including this in the top "server" block:
