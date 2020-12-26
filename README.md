@@ -1,5 +1,7 @@
 # Authenticated Full-Stack Streamlit
 
+## Notes for Users
+
 ### Purpose
 Features:
 - Streamlit application that interacts with an internal API powered by [FastAPI](https://fastapi.tiangolo.com/)
