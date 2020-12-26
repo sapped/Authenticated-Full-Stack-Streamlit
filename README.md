@@ -11,10 +11,8 @@ The nginx project.conf file puts everything behind basic htpasswd authentication
 
 ## how to make an htpasswd
 You need to install apache2-utils
-    ```console
-    sudo apt update
-    sudo apt install apache2-utils
-    ```
+    $ sudo apt update
+    $ sudo apt install apache2-utils
 
 ### Env Files
 API, PGAdmin4, and Postgres each have ".env.template" files that you'll use to create your own ".env" files in each corresponding subdirectory. The ".env" files themselves are .gitignore'd
