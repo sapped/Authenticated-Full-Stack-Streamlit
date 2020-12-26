@@ -13,9 +13,6 @@ Features:
 - copy the .env.template files into new .env files. You should change out these default values with the real environment variables you're looking to use
 - you should gitignore your .env files so you aren't sharing any important credentials with the universe
 
-### To-Do
-- In production, I'll look to replace the 'auth_basic' login using an htpasswd with an 'auth_requeset' SP-initiated SAML 2.0 SSO login flow. Then I'll host the streamlit apps at different endpoints, restricting access to a user whitelist.
-
 ### Authentication
 The nginx project.conf file puts everything behind basic htpasswd authentication by including this in the top "server" block:
 
@@ -49,3 +46,6 @@ Connect to postgres server in pgadmin(ctrl+f for "connect to a database server,"
 
 - [Fully comprehensive, did this one first. But also see below. Nginx should port_forward to 80, not 5050, for the GUI](https://www.enterprisedb.com/postgres-tutorials/reverse-proxying-pgadmin)
 - [But needs to do the port 80 in nginx config, not the 5050 for me to use it](https://stackoverflow.com/questions/61802782/reverse-proxy-in-docker-using-nginx-for-pgadmin4)
+
+## To-Do
+- In production, I'll look to replace the 'auth_basic' login using an htpasswd with an 'auth_requeset' SP-initiated SAML 2.0 SSO login flow. Then I'll host the streamlit apps at different endpoints, restricting access to a user whitelist.
