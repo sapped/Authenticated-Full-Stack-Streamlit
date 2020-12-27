@@ -3,7 +3,7 @@
 ## Notes for Users
 
 ### Rationale & Features
-Streamlit is great, but it doesn't natively support user authentication. This repo leverages Nginx as a reverse proxy layer with enterprise-grade authentication. It includes the ability to authenticate with most protocols like OAuth2, SAML, etc. This particular repo authenticates with Nginx's auth_basic, which is just a hashed username & password on a file. The goal is to separate presentation (streamlit) from logic, piping & persistence (FastAPI / Postgres). Ideally deliver data that is as clean as possible via the API and do minimal work before presenting on Streamlit. This way, you'll be setup for an easy transition to a more robust Flask/Django app once you're finished prototyping.
+Streamlit is great, but it doesn't natively support user authentication. This repo leverages Nginx as a reverse proxy layer with enterprise-grade authentication. It includes the ability to authenticate with most protocols like OAuth2, SAML, etc. This particular repo authenticates with Nginx's auth_basic, which is just a hashed username & password on a file. The goal is to separate presentation (streamlit) from logic, piping & persistence (FastAPI / Postgres). When presenting information in Streamlit, you process as little as possible. Ideally, your database and API calls should get most of the work done, be it with SQL queries to the DB or POST payload parameters to the API. This way, you'll be setup for an easy transition to a more robust Flask/Django app once you're finished prototyping in Streamlit. Or, you can just keep using Streamlit!
 
 - Streamlit application that interacts with an internal API powered by [FastAPI](https://fastapi.tiangolo.com/)
 - Database is postgresql
@@ -48,5 +48,5 @@ Connect to postgres server in pgadmin(ctrl+f for "connect to a database server,"
 - [Fully comprehensive, did this one first. But also see below. Nginx should port_forward to 80, not 5050, for the GUI](https://www.enterprisedb.com/postgres-tutorials/reverse-proxying-pgadmin)
 - [But needs to do the port 80 in nginx config, not the 5050 for me to use it](https://stackoverflow.com/questions/61802782/reverse-proxy-in-docker-using-nginx-for-pgadmin4)
 
-## To-Do
+## Next Steps
 - In production, I'll look to replace the 'auth_basic' login using an htpasswd with an 'auth_requeset' SP-initiated SAML 2.0 SSO login flow. Then I'll host the streamlit apps at different endpoints, restricting access to a user whitelist.
