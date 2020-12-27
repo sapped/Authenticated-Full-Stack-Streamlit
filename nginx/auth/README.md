@@ -1,5 +1,4 @@
-put your .htpasswd file here
-run:
+put your .htpasswd file here & run:
     
     htpasswd .htpasswd -c <username>
 
