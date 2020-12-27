@@ -2,13 +2,18 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 
-
 import os
 from fastapi_sqlalchemy import DBSessionMiddleware
 from fastapi_sqlalchemy import db
-from models import User as ModelUser
-from schema import User as SchemaUser
 from dotenv import load_dotenv
+
+# Model Imports
+from models import User as ModelUser
+from models import Item as ModelItem
+
+# Schema Imports
+from schema import User as SchemaUser
+from schema import Item as SchemaItem
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR,'.env'))
@@ -32,10 +37,14 @@ def create_user(user: SchemaUser):
     db.session.commit()
     return db_user
 
-@app.get('/baby')
-def baby():
-    return 'baby'
-
+@app.post("/item/", response_model=SchemaItem)
+def create_item(item: SchemaItem):
+    db_item = ModelItem(
+        name=item.name,
+        price=item.price)
+    db.session.add(db_item)
+    db.session.commit()
+    return db_item
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

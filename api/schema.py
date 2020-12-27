@@ -7,3 +7,10 @@ class User(BaseModel):
 
     class Config:
         orm_mode = True
+
+class Item(BaseModel):
+    name: str
+    price: float
+
+    class Config:
+        orm_mode = True
