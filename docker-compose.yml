@@ -7,7 +7,7 @@ services:
     build:
       context: ./streamlit
       dockerfile: Dockerfile
-    container_name: app
+    container_name: streamlit
     restart: always
     # do not publicly expose port 8501
     # ports:

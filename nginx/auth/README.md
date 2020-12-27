@@ -1,6 +1,6 @@
 put your .htpasswd file here & run:
     
-    htpasswd .htpasswd -c <username>
+    htpasswd -c .htpasswd <username>
 
 to add another to an existing file (-c overwrites existing), I run:
     
