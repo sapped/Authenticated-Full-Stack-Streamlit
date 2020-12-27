@@ -48,7 +48,7 @@ def write():
             update = False
 
 def update_item(item, id):
-    url = f'{API_URL}/item/{id}'
+    url = f'{API_URL}/item/update/{id}'
     res = requests.post(url, json=item)
     return json.loads(res.text)
 

@@ -8,10 +8,9 @@ import src.pages.read
 import src.pages.update
 import src.pages.delete
 
-ast.core.services.other.set_logging_format()
+# ast.core.services.other.set_logging_format()
 
 PAGES = {
-    'Test': src.pages.test,
     'Create': src.pages.create,
     'Read': src.pages.read,
     'Update': src.pages.update,
