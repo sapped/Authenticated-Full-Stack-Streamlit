@@ -1,4 +1,4 @@
-# Authenticated Full-Stack Streamlit (Lightweight)
+# Authenticated Full-Stack Streamlit
 
 ## Notes for Users
 
@@ -27,6 +27,7 @@ But I also want a bit more than that. I also want a DB and an API to interact wi
     docker-compose up
 
 7. If you need more help with docker, see below resources
+8. See pgadmin4 referenced guide below for instructions on connecting DB to pgadmin4 if you need help with that
 
 ### Authentication
 The nginx project.conf file puts everything behind basic htpasswd authentication by including this in the top "server" block. Again, see the README in the repo folder nginx/auth for details on how to create the (super easy to make) .htpasswd file that drives this basic authentication
