@@ -23,14 +23,18 @@ def write():
         options=list(items.index),
         format_func=lambda x: f'{x}: {items.loc[x,namecol]} (${items.loc[x,pricecol]})')
 
-    if st.button(label='Delete'):
-        delete_item(id=selected_id)
+    delete = st.button(label='Delete'):
+
+    if delete:
+        deleted_item = delete_item(id=selected_id)
+        if deleted_item:
+            st.write(deleted_item)
+            delete = False
 
 def delete_item(id):
     url = f'{API_URL}/item/delete/{id}'
     res = requests.post(url)
-    res_json = json.loads(res.text)
-    st.write(res_json)
+    return json.loads(res.text)
 
 def read_items():
     url = f'{API_URL}/items/'

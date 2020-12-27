@@ -50,6 +50,8 @@ fixMatplotlib = true
 # Default: []
 folderWatchBlacklist = ['']
 
+enableWebsocketCompression = false
+
 
 
 # If false, will attempt to open a browser window on start.

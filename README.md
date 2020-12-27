@@ -30,7 +30,7 @@ But I also want a bit more than that. I also want a DB and an API to interact wi
 8. See pgadmin4 referenced guide below for instructions on connecting DB to pgadmin4 if you need help with that
 
 ### Default Implementaion
-This repo shows a default use-case where you can create, read, update, delete a basic "item" example. You can see how a RESTFUL configuration might flow between Streamlit, FastAPI, and Postgresql. With the added benefit of /pgadmin4/ to confirm your database is properly updated (see below reference resources on how to connect pgadmin4)
+This repo shows a default use-case where you can create, read, update, delete a basic "item" example. You can see how a RESTFUL configuration might flow between Streamlit, FastAPI, and Postgresql. With the added benefit of /pgadmin4/ to confirm your database is properly updated (see below reference resources on how to connect pgadmin4).
 
 ### Authentication
 The nginx project.conf file puts everything behind basic htpasswd authentication by including this in the top "server" block. Again, see the README in the repo folder nginx/auth for details on how to create the (super easy to make) .htpasswd file that drives this basic authentication

@@ -39,14 +39,18 @@ def write():
         value=item_original['price']
     )
 
-    if st.button(label='Submit'):
-        update_item(item=item_update, id=selected_id)
+    update = st.button(label='Update'):
+
+    if update:
+        updated_item = update_item(item=item_update, id=selected_id)
+        if updated_item:
+            st.write(updated_item)
+            update = False
 
 def update_item(item, id):
     url = f'{API_URL}/item/{id}'
     res = requests.post(url, json=item)
-    res_json = json.loads(res.text)
-    st.write(res_json)
+    return json.loads(res.text)
 
 def read_items():
     url = f'{API_URL}/items/'
