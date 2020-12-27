@@ -48,7 +48,7 @@ def create_item(item: SchemaItem):
 
 @app.get('/')
 def test():
-    return 'test'
+    return 'Yes this test worked!'
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)

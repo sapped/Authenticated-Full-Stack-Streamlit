@@ -13,27 +13,28 @@ def write():
 
     st.markdown('## Enter item details')
     
-    data = {}
+    item = {}
 
-    data['item_name'] = st.text_input(
+    item['name'] = st.text_input(
         label='Item Name',
         value='')
 
-    data['item_price'] = st.number_input(
+    item['price'] = st.number_input(
         label='Item Price ($USD)',
     )
 
-    res = requests.get(f'{API_URL}/test')
+    st.write(API_URL)
+    res = requests.get(API_URL)
     st.write(res.text)
 
     if st.button(label='Submit'):
         st.write('yay')
-        submit_item(data)
+        submit_item(item)
 
-def submit_item(data):
-    url = f'{API_URL}/item'
+def submit_item(item):
+    url = f'{API_URL}/item/'
     st.write(url)
-    res = requests.post(url, data=data)
+    res = requests.post(url, json=item)
     res_json = json.loads(res.text)
     st.write(res_json)
 
