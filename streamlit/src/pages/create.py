@@ -23,17 +23,11 @@ def write():
         label='Item Price ($USD)',
     )
 
-    st.write(API_URL)
-    res = requests.get(API_URL)
-    st.write(res.text)
-
     if st.button(label='Submit'):
-        st.write('yay')
         submit_item(item)
 
 def submit_item(item):
     url = f'{API_URL}/item/'
-    st.write(url)
     res = requests.post(url, json=item)
     res_json = json.loads(res.text)
     st.write(res_json)

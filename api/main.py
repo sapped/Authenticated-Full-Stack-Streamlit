@@ -27,6 +27,7 @@ app.add_middleware(
     DBSessionMiddleware,
     db_url=os.environ['DATABASE_URL'])
 
+# arbitrary user resource I built when following a tutorial - not used in streamlit CRUD example
 @app.post("/user/", response_model=SchemaUser)
 def create_user(user: SchemaUser):
     db_user = ModelUser(
@@ -37,6 +38,7 @@ def create_user(user: SchemaUser):
     db.session.commit()
     return db_user
 
+# create an item
 @app.post("/item/", response_model=SchemaItem)
 def create_item(item: SchemaItem):
     db_item = ModelItem(
@@ -45,6 +47,13 @@ def create_item(item: SchemaItem):
     db.session.add(db_item)
     db.session.commit()
     return db_item
+
+# get all items
+@app.get('/items/')
+def get_items():
+    db_items = db.session.query(ModelItem).all()
+    return db_items
+    # return 'all items lol'
 
 @app.get('/')
 def test():
