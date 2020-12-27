@@ -48,6 +48,15 @@ def create_item(item: SchemaItem):
     db.session.commit()
     return db_item
 
+# update an existing item
+@app.post("/item/{id}", response_model=SchemaItem)
+def create_item(id: int, item: SchemaItem):
+    db_item = db.session.query(ModelItem).filter(ModelItem.id == id).first()
+    db_item.name = item.name
+    db_item.price = item.price
+    db.session.commit()
+    return db_item
+
 # get all items
 @app.get('/items/')
 def get_items():
