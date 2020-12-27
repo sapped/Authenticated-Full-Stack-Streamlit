@@ -29,6 +29,9 @@ But I also want a bit more than that. I also want a DB and an API to interact wi
 7. If you need more help with docker, see below resources
 8. See pgadmin4 referenced guide below for instructions on connecting DB to pgadmin4 if you need help with that
 
+### Default Implementaion
+This repo shows a default use-case where you can create, read, update, delete a basic "item" example. You can see how a RESTFUL configuration might flow between Streamlit, FastAPI, and Postgresql. With the added benefit of /pgadmin4/ to confirm your database is properly updated (see below reference resources on how to connect pgadmin4)
+
 ### Authentication
 The nginx project.conf file puts everything behind basic htpasswd authentication by including this in the top "server" block. Again, see the README in the repo folder nginx/auth for details on how to create the (super easy to make) .htpasswd file that drives this basic authentication
 
@@ -66,5 +69,4 @@ In case you are unfamiliar with docker, [Jeff Astor has a really nice series](ht
 Shoutout to Marc, providing a great workaround for pagination via [awesome-streamlit (pypi)](https://pypi.org/project/awesome-streamlit/) which I gladly repurposed here. And of course, here is the [awesome-streamlit github repo](https://github.com/MarcSkovMadsen/awesome-streamlit).
 
 ## Next Steps
-- Add use-case to Readme.md showcasing create, read, update, delete of a basic "item" example, flowing between Streamlit, FastAPI, and Postgresql.
 - In production, I'll look to replace the 'auth_basic' login using an htpasswd with an 'auth_requeset' SP-initiated SAML 2.0 SSO login flow. Then I'll host the streamlit apps at different endpoints, restricting access to a user whitelist.
