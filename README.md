@@ -5,6 +5,7 @@
 ### Rationale & Features
 Streamlit is great, but it doesn't natively support user authentication. This repo leverages Nginx as a reverse proxy layer with enterprise-grade authentication. It includes the ability to authenticate with most protocols like OAuth2, SAML, etc. This particular repo authenticates with Nginx's auth_basic, which is just a hashed username & password on a file. The goal is to separate presentation (streamlit) from logic, piping & persistence (FastAPI / Postgres). When presenting information in Streamlit, you process as little as possible. Ideally, your database and API calls should get most of the work done, be it with SQL queries to the DB or POST payload parameters to the API. This way, you'll be setup for an easy transition to a more robust Flask/Django app once you're finished prototyping in Streamlit. Or, you can just keep using Streamlit!
 
+- Built on back of docker & docker-compose, so it's hopefully easy to deploy (see first-time setup instructions below)
 - Streamlit application that interacts with an internal API powered by [FastAPI](https://fastapi.tiangolo.com/)
 - Database is postgresql
 - pgadmin at /pgadmin4/
@@ -16,7 +17,14 @@ Streamlit is great, but it doesn't natively support user authentication. This re
 2. you should gitignore your .env files so you aren't sharing any important credentials with the universe
 3. create htpasswd .htpasswd -c <user> in the nginx > auth folder. More details in the READAME at nginx/auth. Also make sure that .htpasswd is in your gitignore, you probably don't want to share your hashed password with the world.
 4. for subsequent users, you can print to command line by switching -c to -n and then copy-pasting the hashed password result
-5. when you have made all the .env files and the .htpasswd file, run docker-compose up --build
+5. when you have made all the .env files and the .htpasswd file, build your docker. This can take some time!
+
+    docker-compose up --build
+6. Once you've built the app, you can run it again and exclude the slow build process with
+
+    docker-compose up
+
+7. If you need more help with docker, see below resources
 
 ### Authentication
 The nginx project.conf file puts everything behind basic htpasswd authentication by including this in the top "server" block. Again, see the README in the repo folder nginx/auth for details on how to create the (super easy to make) .htpasswd file that drives this basic authentication
@@ -47,6 +55,9 @@ Connect to postgres server in pgadmin(ctrl+f for "connect to a database server,"
 
 - [Fully comprehensive, did this one first. But also see below. Nginx should port_forward to 80, not 5050, for the GUI](https://www.enterprisedb.com/postgres-tutorials/reverse-proxying-pgadmin)
 - [But needs to do the port 80 in nginx config, not the 5050 for me to use it](https://stackoverflow.com/questions/61802782/reverse-proxy-in-docker-using-nginx-for-pgadmin4)
+
+### Docker Basics
+[Jeff Astor has a really nice series](https://www.jeffastor.com/blog/pairing-a-postgresql-db-with-your-dockerized-fastapi-app) on "enough Docker to get by." This is a link to part two, which has some helpful commands. But you might want to rewind to Part 1, which is linked at the top of his blog post.
 
 ## Next Steps
 - In production, I'll look to replace the 'auth_basic' login using an htpasswd with an 'auth_requeset' SP-initiated SAML 2.0 SSO login flow. Then I'll host the streamlit apps at different endpoints, restricting access to a user whitelist.
