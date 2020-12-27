@@ -12,22 +12,17 @@ Streamlit is great, but it doesn't natively support user authentication. This re
 - Nginx serves everything. See project.conf for the routes. Should be easy to read & follow-along the logic to add other services. Should even be easy to serve multiple streamlit applications with this
 
 ### First-time setup
-- The subfolders for the API, PGAdmin4, and Postgres each have ".env.template" files that you'll use to create your own ".env" files in each corresponding subdirectory. The ".env" files themselves are .gitignore'd
-- copy the .env.template files into new .env files. You should change out these default values with the real environment variables you're looking to use
-- you should gitignore your .env files so you aren't sharing any important credentials with the universe
-- create htpasswd .htpasswd -c <user> in the nginx > auth folder
-- for subsequent users, you can print to command line by switching -c to -n and then copy-pasting the hashed password result
+1. The subfolders for the API, PGAdmin4, and Postgres each have ".env.template" files that you'll use to create your own ".env" files in each corresponding subdirectory. The ".env" files themselves are .gitignore'd. So, copy the .env.template files into new .env files. You should change out these default values with the real environment variables you're looking to use
+2. you should gitignore your .env files so you aren't sharing any important credentials with the universe
+3. create htpasswd .htpasswd -c <user> in the nginx > auth folder. More details in the READAME at nginx/auth
+4. for subsequent users, you can print to command line by switching -c to -n and then copy-pasting the hashed password result
+5. when you have made all the .env files and the .htpasswd file, run docker-compose up --build
 
 ### Authentication
 The nginx project.conf file puts everything behind basic htpasswd authentication by including this in the top "server" block:
 
     auth_basic "closed site";
     auth_basic_user_file /nginx/auth/.htpasswd;
-
-## how to make an htpasswd
-You need to install apache2-utils
-    $ sudo apt update
-    $ sudo apt install apache2-utils\
 
 ## Guides Referenced when Building This
 
