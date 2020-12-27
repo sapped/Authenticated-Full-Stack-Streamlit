@@ -39,7 +39,7 @@ def write():
         value=item_original['price']
     )
 
-    update = st.button(label='Update'):
+    update = st.button(label='Update')
 
     if update:
         updated_item = update_item(item=item_update, id=selected_id)

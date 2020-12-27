@@ -23,7 +23,7 @@ def write():
         options=list(items.index),
         format_func=lambda x: f'{x}: {items.loc[x,namecol]} (${items.loc[x,pricecol]})')
 
-    delete = st.button(label='Delete'):
+    delete = st.button(label='Delete')
 
     if delete:
         deleted_item = delete_item(id=selected_id)

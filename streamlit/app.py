@@ -11,6 +11,7 @@ import src.pages.delete
 ast.core.services.other.set_logging_format()
 
 PAGES = {
+    'Test': src.pages.test,
     'Create': src.pages.create,
     'Read': src.pages.read,
     'Update': src.pages.update,
