@@ -1,4 +1,4 @@
-# Authenticated Full-Stack Streamlit
+# Authenticated Full-Stack Streamlit (Lightweight)
 
 ## Notes for Users
 
@@ -62,4 +62,5 @@ Connect to postgres server in pgadmin(ctrl+f for "connect to a database server,"
 In case you are unfamiliar with docker, [Jeff Astor has a really nice series](https://www.jeffastor.com/blog/pairing-a-postgresql-db-with-your-dockerized-fastapi-app) on "enough Docker to get by." This is a link to part two, which has some helpful commands. But you might want to rewind to Part 1, which is linked at the top of his blog post.
 
 ## Next Steps
+- Add use-case to Readme.md showcasing create, read, update, delete of a basic "item" example, flowing between Streamlit, FastAPI, and Postgresql.
 - In production, I'll look to replace the 'auth_basic' login using an htpasswd with an 'auth_requeset' SP-initiated SAML 2.0 SSO login flow. Then I'll host the streamlit apps at different endpoints, restricting access to a user whitelist.
