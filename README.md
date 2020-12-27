@@ -57,7 +57,7 @@ Connect to postgres server in pgadmin(ctrl+f for "connect to a database server,"
 - [But needs to do the port 80 in nginx config, not the 5050 for me to use it](https://stackoverflow.com/questions/61802782/reverse-proxy-in-docker-using-nginx-for-pgadmin4)
 
 ### Docker Basics
-[Jeff Astor has a really nice series](https://www.jeffastor.com/blog/pairing-a-postgresql-db-with-your-dockerized-fastapi-app) on "enough Docker to get by." This is a link to part two, which has some helpful commands. But you might want to rewind to Part 1, which is linked at the top of his blog post.
+In case you are unfamiliar with docker, [Jeff Astor has a really nice series](https://www.jeffastor.com/blog/pairing-a-postgresql-db-with-your-dockerized-fastapi-app) on "enough Docker to get by." This is a link to part two, which has some helpful commands. But you might want to rewind to Part 1, which is linked at the top of his blog post.
 
 ## Next Steps
 - In production, I'll look to replace the 'auth_basic' login using an htpasswd with an 'auth_requeset' SP-initiated SAML 2.0 SSO login flow. Then I'll host the streamlit apps at different endpoints, restricting access to a user whitelist.
