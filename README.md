@@ -14,17 +14,18 @@ Streamlit is great, but it doesn't natively support user authentication. This re
 ### First-time setup
 1. The subfolders for the API, PGAdmin4, and Postgres each have ".env.template" files that you'll use to create your own ".env" files in each corresponding subdirectory. The ".env" files themselves are .gitignore'd. So, copy the .env.template files into new .env files. You should change out these default values with the real environment variables you're looking to use
 2. you should gitignore your .env files so you aren't sharing any important credentials with the universe
-3. create htpasswd .htpasswd -c <user> in the nginx > auth folder. More details in the READAME at nginx/auth
+3. create htpasswd .htpasswd -c <user> in the nginx > auth folder. More details in the READAME at nginx/auth. Also make sure that .htpasswd is in your gitignore, you probably don't want to share your hashed password with the world.
 4. for subsequent users, you can print to command line by switching -c to -n and then copy-pasting the hashed password result
 5. when you have made all the .env files and the .htpasswd file, run docker-compose up --build
 
 ### Authentication
-The nginx project.conf file puts everything behind basic htpasswd authentication by including this in the top "server" block:
+The nginx project.conf file puts everything behind basic htpasswd authentication by including this in the top "server" block. Again, see the README in the repo folder nginx/auth for details on how to create the (super easy to make) .htpasswd file that drives this basic authentication
 
     auth_basic "closed site";
     auth_basic_user_file /nginx/auth/.htpasswd;
 
 ## Guides Referenced when Building This
+Here's some further detail if I'm not clear enough on anything. Thanks to everybody who wrote the guides below, they taught me a lot.
 
 ### Alembic
 When you run your first alembic migration, type this:
