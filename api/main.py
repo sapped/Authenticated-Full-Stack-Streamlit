@@ -50,7 +50,7 @@ def create_item(item: SchemaItem):
 
 # update an existing item
 @app.post("/item/update/{id}", response_model=SchemaItem)
-def create_item(id: int, item: SchemaItem):
+def update_item(id: int, item: SchemaItem):
     db_item = db.session.query(ModelItem).filter(ModelItem.id == id).first()
     db_item.name = item.name
     db_item.price = item.price
@@ -59,7 +59,7 @@ def create_item(id: int, item: SchemaItem):
 
 # delete an existing item
 @app.post("/item/delete/{id}", response_model=SchemaItem)
-def create_item(id: int):
+def delete_item(id: int):
     db_item = db.session.query(ModelItem).filter(ModelItem.id == id).first()
     db.session.delete(db_item)
     db.session.commit()
@@ -70,11 +70,6 @@ def create_item(id: int):
 def get_items():
     db_items = db.session.query(ModelItem).all()
     return db_items
-    # return 'all items lol'
-
-@app.get('/')
-def test():
-    return 'Yes this test worked!'
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
