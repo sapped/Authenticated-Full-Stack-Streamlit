@@ -49,11 +49,19 @@ def create_item(item: SchemaItem):
     return db_item
 
 # update an existing item
-@app.post("/item/{id}", response_model=SchemaItem)
+@app.post("/item/update/{id}", response_model=SchemaItem)
 def create_item(id: int, item: SchemaItem):
     db_item = db.session.query(ModelItem).filter(ModelItem.id == id).first()
     db_item.name = item.name
     db_item.price = item.price
+    db.session.commit()
+    return db_item
+
+# delete an existing item
+@app.post("/item/delete/{id}", response_model=SchemaItem)
+def create_item(id: int):
+    db_item = db.session.query(ModelItem).filter(ModelItem.id == id).first()
+    db.session.delete(db_item)
     db.session.commit()
     return db_item
 

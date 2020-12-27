@@ -31,11 +31,11 @@ def write():
     item_update = {}
 
     item_update['name'] = st.text_input(
-        label='Item Name',
+        label='Update Item Name',
         value=item_original['name'])
 
     item_update['price'] = st.number_input(
-        label='Item Price ($USD)',
+        label='Update Item Price ($USD)',
         value=item_original['price']
     )
 
