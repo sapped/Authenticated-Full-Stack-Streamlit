@@ -12,4 +12,5 @@ RUN pip install pipenv
 COPY Pipfile Pipfile.lock /streamlit/
 RUN pipenv install --system --dev
 
+RUN pip install "numpy>1.20"
 CMD streamlit run app.py
